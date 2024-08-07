@@ -1,0 +1,2 @@
+[信息-2024-08-08 01:14:02](函数: __cdecl T_Home::T_Home(class QWidget *) , 行数: 179) -> 初始化成功
+[警告-2024-08-08 01:14:09](函数: void __cdecl QWindowsWindow::setGeometry(const class QRect &) , 行数: 2134) -> QWindowsWindow::setGeometry: Unable to set geometry 600x45+1782+929 (frame: 600x45+1782+930) on QWidgetWindow/"ElaContentDialogClassWindow" on "AG324UWS4R4B". Resulting geometry: 622x298+1771+883 (frame: 622x298+1771+884) margins: 0, -1, 0, 1 minimum size: 261x161 MINMAXINFO(maxSize=POINT(x=0, y=0), maxpos=POINT(x=0, y=0), maxtrack=POINT(x=0, y=0), mintrack=POINT(x=392, y=242)))

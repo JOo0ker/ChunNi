@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0ED5A726-B1C6-441E-8BC7-272488B29442}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>6.5.0_msvc2019_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>6.5.0_msvc2019_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>Public;ElaWidget/src/private;ElaWidget/src/include;ElaWidget/src/DeveloperComponents;ElaWidget/src/DeveloperComponents/private;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>ELAWIDGETTOOLS_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;DXGI.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Private\ToDo\CNToDoPage.cpp" />
+    <ClCompile Include="Private\ToDo\ToDoItemElaCheckBox.cpp" />
+    <QtRcc Include="ChunNi.qrc" />
+    <QtUic Include="ChunNi.ui" />
+    <QtMoc Include="ChunNi.h" />
+    <ClCompile Include="ChunNi.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaBaseListView.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaBreadcrumbBarDelegate.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaBreadcrumbBarModel.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaCentralStackedWidget.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaCheckBoxStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaComboBoxStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaComboBoxView.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaCompactDelegate.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaCompactModel.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaDockWidgetTitleBar.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaDxgi.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaFooterDelegate.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaFooterModel.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaLineEditStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaListViewDelegate.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaMenuBarStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaMenuStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaNavigationDelegate.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaNavigationModel.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaNavigationNode.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaNavigationStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaNavigationView.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaPopularCardFloater.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaProgressBarStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaRadioButtonStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaScrollBarStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaSliderStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaSpinBoxStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaStatusBarStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaSuggestBoxSearchViewContainer.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaSuggestDelegate.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaSuggestModel.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaTabBarStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaTableViewStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaThemeAnimationWidget.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaToolBarStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaToolButtonStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\ElaWindowStyle.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\private\ElaComboBoxViewPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\private\ElaDxgiPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\private\ElaFooterDelegatePrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\private\ElaNavigationDelegatePrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\private\ElaNavigationModelPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\private\ElaNavigationNodePrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\DeveloperComponents\private\ElaRadioButtonPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaAcrylicUrlCard.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaAppBar.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaApplication.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaBreadcrumbBar.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaCheckBox.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaComboBox.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaContentDialog.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaDockWidget.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaDoubleSpinBox.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaDxgiManager.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaEventBus.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaExponentialBlur.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaFlowLayout.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaGraphicsItem.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaGraphicsLineItem.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaGraphicsScene.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaGraphicsView.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaIcon.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaIconButton.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaImageCard.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaInteractiveCard.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaLineEdit.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaListView.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaLog.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaMenu.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaMenuBar.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaMessageBar.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaMessageButton.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaMultiSelectComboBox.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaNavigationBar.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaNavigationRouter.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaPopularCard.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaProgressBar.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaPromotionCard.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaPromotionView.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaPushButton.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaRadioButton.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaReminderCard.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaScrollArea.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaScrollBar.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaScrollPage.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaScrollPageArea.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaSlider.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaSpinBox.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaStatusBar.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaSuggestBox.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaTabBar.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaTableView.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaTabWidget.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaText.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaTheme.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaToggleButton.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaToggleSwitch.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaToolBar.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaToolButton.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaWidget.cpp" />
+    <ClCompile Include="ElaWidget\src\ElaWindow.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaAcrylicUrlCardPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaAppBarPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaApplicationPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaBreadcrumbBarPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaComboBoxPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaContentDialogPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaDockWidgetPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaDxgiManagerPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaEventBusPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaFlowLayoutPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaGraphicsItemPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaGraphicsScenePrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaGraphicsViewPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaIconButtonPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaInteractiveCardPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaLineEditPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaLogPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaMenuPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaMessageBarPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaMessageButtonPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaMultiSelectComboBoxPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaNavigationBarPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaNavigationRouterPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaPopularCardPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaProgressBarPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaPromotionCardPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaPromotionViewPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaPushButtonPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaReminderCardPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaScrollBarPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaScrollPageAreaPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaScrollPagePrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaSuggestBoxPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaTextPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaThemePrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaToggleButtonPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaToggleSwitchPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaToolBarPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaToolButtonPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaWidgetPrivate.cpp" />
+    <ClCompile Include="ElaWidget\src\private\ElaWindowPrivate.cpp" />
+    <ClCompile Include="ExamplePage\T_BaseComponents.cpp" />
+    <ClCompile Include="ExamplePage\T_Card.cpp" />
+    <ClCompile Include="ExamplePage\T_ElaScreen.cpp" />
+    <ClCompile Include="ExamplePage\T_Home.cpp" />
+    <ClCompile Include="ExamplePage\T_Icon.cpp" />
+    <ClCompile Include="ExamplePage\T_IconDelegate.cpp" />
+    <ClCompile Include="ExamplePage\T_IconModel.cpp" />
+    <ClCompile Include="ExamplePage\T_LogModel.cpp" />
+    <ClCompile Include="ExamplePage\T_LogWidget.cpp" />
+    <ClCompile Include="ExamplePage\T_Popup.cpp" />
+    <ClCompile Include="ExamplePage\T_TabWidget.cpp" />
+    <ClCompile Include="ExamplePage\T_UpdateWidget.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\private\ElaComboBoxViewPrivate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\private\ElaDxgiPrivate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\private\ElaFooterDelegatePrivate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\private\ElaNavigationDelegatePrivate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\private\ElaNavigationModelPrivate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\private\ElaNavigationNodePrivate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\private\ElaRadioButtonPrivate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaBaseListView.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaBreadcrumbBarDelegate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaBreadcrumbBarModel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaCentralStackedWidget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaCheckBoxStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaComboBoxStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaComboBoxView.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaCompactDelegate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaCompactModel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaDockWidgetTitleBar.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaDxgi.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaFooterDelegate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaFooterModel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaLineEditStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaListViewDelegate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaMenuBarStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaMenuStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaNavigationDelegate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaNavigationModel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaNavigationNode.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaNavigationStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaNavigationView.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaPopularCardFloater.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaProgressBarStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaRadioButtonStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaScrollBarStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaSliderStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaSpinBoxStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaStatusBarStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaSuggestBoxSearchViewContainer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaSuggestDelegate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaSuggestModel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaTabBarStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaTableViewStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaThemeAnimationWidget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaToolBarStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaToolButtonStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\DeveloperComponents\ElaWindowStyle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\Def.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\ElaAcrylicUrlCard.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\ElaAppBar.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\ElaApplication.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\ElaBreadcrumbBar.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\ElaCheckBox.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\ElaComboBox.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\ElaContentDialog.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\ElaDockWidget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\ElaDoubleSpinBox.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\ElaDxgiManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\ElaEventBus.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\ElaExponentialBlur.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\ElaFlowLayout.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ElaWidget\src\include\ElaGraphicsItem.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Public\ToDo\CNToDoPage.h" />
+    <QtMoc Include="Public\ToDo\ToDoItemElaCheckBox.h" />
+    <ClInclude Include="ElaWidget\src\include\ElaGraphicsLineItem.h" />
+    <ClInclude Include="ElaWidget\src\include\ElaIcon.h" />
+    <ClInclude Include="ElaWidget\src\include\singleton.h" />
+    <ClInclude Include="ElaWidget\src\include\stdafx.h" />
+    <QtMoc Include="ExamplePage\T_UpdateWidget.h" />
+    <QtMoc Include="ExamplePage\T_TabWidget.h" />
+    <QtMoc Include="ExamplePage\T_Popup.h" />
+    <QtMoc Include="ExamplePage\T_LogWidget.h" />
+    <QtMoc Include="ExamplePage\T_LogModel.h" />
+    <QtMoc Include="ExamplePage\T_IconModel.h" />
+    <QtMoc Include="ExamplePage\T_IconDelegate.h" />
+    <QtMoc Include="ExamplePage\T_Icon.h" />
+    <QtMoc Include="ExamplePage\T_Home.h" />
+    <QtMoc Include="ExamplePage\T_ElaScreen.h" />
+    <QtMoc Include="ExamplePage\T_Card.h" />
+    <QtMoc Include="ExamplePage\T_BaseComponents.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaWindowPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaWidgetPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaToolButtonPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaToolBarPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaToggleSwitchPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaToggleButtonPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaThemePrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaTextPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaSuggestBoxPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaScrollPagePrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaScrollPageAreaPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaScrollBarPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaReminderCardPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaPushButtonPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaPromotionViewPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaPromotionCardPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaProgressBarPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaPopularCardPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaNavigationRouterPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaNavigationBarPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaMultiSelectComboBoxPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaMessageButtonPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaMessageBarPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaMenuPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaLogPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaLineEditPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaInteractiveCardPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaIconButtonPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaGraphicsViewPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaGraphicsScenePrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaGraphicsItemPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaFlowLayoutPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaEventBusPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaDxgiManagerPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaDockWidgetPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaContentDialogPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaComboBoxPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaBreadcrumbBarPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaApplicationPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaAppBarPrivate.h" />
+    <QtMoc Include="ElaWidget\src\private\ElaAcrylicUrlCardPrivate.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaWindow.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaWidget.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaToolButton.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaToolBar.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaToggleSwitch.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaToggleButton.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaTheme.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaText.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaTabWidget.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaTableView.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaTabBar.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaSuggestBox.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaStatusBar.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaSpinBox.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaSlider.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaScrollPageArea.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaScrollPage.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaScrollBar.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaScrollArea.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaReminderCard.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaRadioButton.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaPushButton.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaPromotionView.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaPromotionCard.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaProgressBar.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaPopularCard.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaNavigationRouter.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaNavigationBar.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaMultiSelectComboBox.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaMessageButton.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaMessageBar.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaMenuBar.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaMenu.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaLog.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaListView.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaLineEdit.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaInteractiveCard.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaImageCard.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaIconButton.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaGraphicsView.h" />
+    <QtMoc Include="ElaWidget\src\include\ElaGraphicsScene.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

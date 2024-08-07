@@ -1,0 +1,26 @@
+{
+    "items": [
+        {
+            "itemName": "家园",
+            "lastUpdateTime": "2024-08-08T01:14:10",
+            "resetTimes": [
+                [
+                    1,
+                    "07:00:00"
+                ]
+            ],
+            "state": false
+        },
+        {
+            "itemName": "大战",
+            "lastUpdateTime": "2024-08-08T01:14:10",
+            "resetTimes": [
+                [
+                    2,
+                    "08:00:00"
+                ]
+            ],
+            "state": false
+        }
+    ]
+}
